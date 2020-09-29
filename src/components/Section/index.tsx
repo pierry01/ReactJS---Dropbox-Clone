@@ -1,14 +1,24 @@
-import React from 'react'
+import React from "react";
 
-import { Container, HeaderWrapper, Header, DropboxLogo, Content } from './styles'
+import {
+  Container,
+  HeaderWrapper,
+  Header,
+  DropboxLogo,
+  Content,
+} from "./styles";
 
 interface Props {
-  variant: 'blue' | 'beige' | 'white' | 'black'
-  title: string
-  description: string
+  variant: "blue" | "beige" | "white" | "black";
+  title: string;
+  description: string;
 }
 
 const Section: React.FC<Props> = ({ variant, title, description }) => {
+  const handleToggle = () => {
+    if (window.toggleActiveMenu) window.toggleActiveMenu();
+  };
+
   return (
     <Container className={variant}>
       <HeaderWrapper>
@@ -17,8 +27,8 @@ const Section: React.FC<Props> = ({ variant, title, description }) => {
             <DropboxLogo />
             <span>Dropbox</span>
           </h1>
-          
-          <button>Interagir</button>
+
+          <button onClick={handleToggle}>Interagir</button>
         </Header>
       </HeaderWrapper>
 
@@ -27,7 +37,7 @@ const Section: React.FC<Props> = ({ variant, title, description }) => {
         <p>{description}</p>
       </Content>
     </Container>
-  )
-}
+  );
+};
 
-export default Section
+export default Section;
